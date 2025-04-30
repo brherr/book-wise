@@ -15,7 +15,7 @@ const variantStyles: Record<BookCoverVariant, string> = {
 
 interface Props {
   className?: string;
-  variant: BookCoverVariant;
+  variant?: BookCoverVariant;
   coverColor: string;
   coverUrl: string;
 }
@@ -26,7 +26,6 @@ const BookCover = ({
   coverColor = "#012B48",
   coverUrl = "https://placehold.co/400x600.png",
 }: Props) => {
-  console.log(coverColor);
   return (
     <div
       className={cn(
