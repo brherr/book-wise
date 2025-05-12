@@ -12,7 +12,7 @@ const page = () => (
       email: "",
       password: "",
       fullName: "",
-      universityId: "",
+      universityId: 0,
       universityCard: "",
     }}
     onSubmit={() => {}}
