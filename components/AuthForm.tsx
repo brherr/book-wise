@@ -25,7 +25,6 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import { FIELD_NAMES, FIELD_TYPES } from "@/constants";
 import ImageUploader from "./ImageUploader";
-import { sign } from "crypto";
 
 interface Props<T extends FieldValues> {
   schema: ZodType<T>;
@@ -75,7 +74,7 @@ const AuthForm = <T extends FieldValues>({
                   </FormLabel>
                   <FormControl>
                     {field.name === "universityCard" ? (
-                      <ImageUploader />
+                      <ImageUploader onFileChange={field.onChange} />
                     ) : (
                       <Input
                         required
