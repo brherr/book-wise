@@ -33,15 +33,21 @@ const authenticator = async () => {
   }
 };
 
-const ImageUploader = ({ onFileChange}: {onFileChange: (filePath: string) => void}) => {
+const ImageUploader = ({
+  onFileChange,
+}: {
+  onFileChange: (filePath: string) => void;
+}) => {
   const ikUploadRef = useRef(null);
   const [file, setFile] = useState<{ filePath: string } | null>(null);
 
-  const onError = (error: any) => {console.log(error)};
+  const onError = (error: any) => {
+    console.log(error);
+  };
   const onSuccess = (res: any) => {
-		setFile(res)
-		onFileChange(res.filePath)
-	};
+    setFile(res);
+    onFileChange(res.filePath);
+  };
 
   return (
     <ImageKitProvider
@@ -56,13 +62,16 @@ const ImageUploader = ({ onFileChange}: {onFileChange: (filePath: string) => voi
         onSuccess={onSuccess}
         fileName="test-upload.png"
       />
-      <button className="upload-btn"
-			onClick={(e) => {
-				e.preventDefault()
-				// @ts-ignore
-				if(ikUploadRef.current?.click())
-			}}
-			>
+      <button
+        className="upload-btn"
+        onClick={(e) => {
+          e.preventDefault();
+          if (ikUploadRef.current) {
+            // @ts-ignore
+            ikUploadRef.current?.click();
+          }
+        }}
+      >
         <Image
           src="/icons/upload.svg"
           alt="upload-icon"
